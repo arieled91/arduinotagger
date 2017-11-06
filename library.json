@@ -1,0 +1,12 @@
+{
+  "name": "WifiConnection",
+  "keywords": "wifi, wi-fi, 8266, esp8266, connection, WifiConnection",
+  "description": "ESP8266 WiFi Connection library",
+  "repository":
+  {
+    "type": "git",
+    "url": "https://github.com/arieled91/arduinotagger.git"
+  },
+  "frameworks": "arduino",
+  "version": "0.1"
+}

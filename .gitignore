@@ -3,6 +3,5 @@
 .clang_complete
 .gcc-flags.json
 *.ini
-/src
 *.yml
 .DS_Store

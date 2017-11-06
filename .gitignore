@@ -5,3 +5,4 @@
 *.ini
 /src
 *.yml
+.DS_Store

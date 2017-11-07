@@ -30,13 +30,13 @@ WifiClient::WifiClient(String ssid, String password)
 {
         this->ssid = ssid;
         this->password = password;
-        // factoryReset();
+        //factoryReset();
         initialize();
 }
 
 int WifiClient::connect()
 {
-  Serial.begin(115200);
+  //Serial.begin(115200);
   // The ESP8266 can be set to one of three modes:
   //  1 - ESP8266_MODE_STA - Station only
   //  2 - ESP8266_MODE_AP - Access point only
@@ -51,7 +51,8 @@ int WifiClient::connect()
     if (retVal < 0)
     {
       Serial.println(F("Error setting mode."));
-      errorMsg(retVal);
+      // errorMsg(retVal);
+      return 0;
     }
   }
   Serial.println(F("Mode set to station"));
@@ -98,7 +99,6 @@ void WifiClient::initialize()
   // true
   //esp8266.println("AT+RESTORE"); //uncomment this to do a factory reset
 
-  Serial.begin(115200);
   int test = esp8266.begin();
   if (test != true)
   {
@@ -135,12 +135,11 @@ void WifiClient::errorMsg(int error)
 }
 
 void WifiClient::checkConnection(){
-  esp8266.updateStatus();
+  //esp8266.updateStatus();
   if(esp8266.status()==0) connect();
 }
 
 int WifiClient::get(String server, int port, String path){
-    Serial.begin(115200);
     checkConnection();
     Serial.println("Connecting to server...");
 
@@ -161,21 +160,7 @@ int WifiClient::get(String server, int port, String path){
     if (retVal <= 0)
     {
       Serial.println(F("Failed to connect to server."));
-      return;// To use the ESP8266 as a TCP client, use the
-    // ESP8266Client class. First, create an object:
-    ESP8266Client client;
-
-    // ESP8266Client connect([server], [port]) is used to
-    // connect to a server (const char * or IPAddress) on
-    // a specified port.
-    // Returns: 1 on success, 2 on already connected,
-    // negative on fail (-1=TIMEOUT, -3=FAIL).
-    int retVal = client.connect(server, port);
-    if (retVal <= 0)
-    {
-      Serial.println(F("Failed to connect to server."));
       return 0;
-    }
     }
 
     // print and write can be used to send data to a connected
@@ -189,7 +174,7 @@ int WifiClient::get(String server, int port, String path){
 
     // connected() is a boolean return value - 1 if the
     // connection is active, 0 if it's closed.
-    // if (client.connected())
+    //if (client.connected())
     //   client.stop(); // stop() closes a TCP connection.
     return 1;
   }

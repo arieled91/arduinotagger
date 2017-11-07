@@ -4,4 +4,3 @@
 .gcc-flags.json
 *.ini
 *.yml
-.DS_Store
